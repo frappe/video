@@ -59,11 +59,20 @@ export var f = {
 		await t.click("a[href='" + href + "']")
 	},
 
+	click_print_icon : async function (){
+		await t.click("i.fa-print")
+	},
+
 	click_primary_button : async function (btn_name) {
 		var button = Selector((btn_name) => { 
-			return $('button.primary-action:contains(' + btn_name + '):visible')[0];
+			return $('button.btn-primary:contains(' + btn_name + '):visible')[0];
 		 })
 		await t.click(button(btn_name))
+	},
+
+	close_modal : async function () {
+		const close_btn = Selector(() => { return $(".btn-modal-close:visible")[0];	})
+		await t.click(close_btn);
 	},
 
 	search : async function (result) {
@@ -112,20 +121,10 @@ export var f = {
 			.click(qty)
 			.typeText(qty, item.qty)
 			
-			.click(rate)
-			.typeText(rate, item.rate)
+			// .click(rate)
+			// .typeText(rate, item.rate)
 
 		}
-			
-		// // Print Preview
-		// .click("i.fa-print")
-		// .wait(2000)
-			
-		// .click( Selector("button.btn-primary").withText("Yes") )
-		// .wait(2000)
-
-		// // Close e-mail modal
-		// .click(close_btn)
 	}
 
 }
