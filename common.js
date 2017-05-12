@@ -1,4 +1,5 @@
 import { Selector, ClientFunction, t } from 'testcafe';
+import async from 'async';
 import say from 'say';
 
 export var f = {
@@ -45,44 +46,51 @@ export var f = {
 			.click("a.navbar-brand img.erpnext-icon")
 	},
 
-	click_icon : async function (name) {
+	click_icon : async function (name, callback) {
 		await t
 			.click("div.case-wrapper[data-name=" + name + "]")
+		return this
 	},
 
-	click_module : async function (module_name) {
+	click_module : async function (module_name, callback) {
 		await t
 			.click(".module-link[data-name='" + module_name + "']")
+		return this;
 	},
 
-	click_link : async function (href) {
+	click_link : async function (href, callback) {
 		await t.click("a[href='" + href + "']")
+		return this;
 	},
 
-	click_print_icon : async function (){
+	click_print_icon : async function (callback){
 		await t.click("i.fa-print")
+		return this;
 	},
 
-	click_primary_button : async function (btn_name) {
+	click_primary_button : async function (btn_name, callback) {
 		var button = Selector((btn_name) => { 
 			return $('button.btn-primary:contains(' + btn_name + '):visible')[0];
 		 })
 		await t.click(button(btn_name))
+		return this;
 	},
 
-	close_modal : async function () {
+	close_modal : async function (callback) {
 		const close_btn = Selector(() => { return $(".btn-modal-close:visible")[0];	})
 		await t.click(close_btn);
+		return this;
 	},
 
-	search : async function (result) {
+	search : async function (result, callback) {
 		await t
 			.click("#navbar-search")
 			.typeText("#navbar-search", result.toLowerCase())
 			.click( Selector("li").withText(result) )
+		return this;
 	},
 
-	fill_field: async function (fieldname, fieldtype, value) {
+	fill_field: async function (fieldname, fieldtype, value, callback) {
 		if (fieldtype == "Link") {
 			var field = Selector((fieldname) => {
 				return $('input[data-fieldname=' + fieldname + ']:visible')[0];
@@ -102,9 +110,10 @@ export var f = {
 		else {
 			return;
 		}
+		return this;
 	},
 
-	fill_items_table : async function (items){
+	fill_items_table : async function (items, callback){
 		const close_btn = Selector(() => { return $(".btn-modal-close:visible")[0];	})
 
 		for(var i = 1; i == items.length; i++){
@@ -125,8 +134,21 @@ export var f = {
 			// .typeText(rate, item.rate)
 
 		}
+		return this;
 	}
 
 }
 
 Object.assign(f, t)
+
+async.series([
+  f.speak.bind(f),
+  f.click_module.bind(f),
+  f.click_link.bind(f),
+  f.click_primary_button.bind(f),
+  f.click_print_icon.bind(f),
+  f.close_modal.bind(f),
+  f.fill_field.bind(f),
+  f.fill_items_table.bind(f),
+  f.search.bind(f)
+]);

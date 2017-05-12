@@ -7,7 +7,7 @@ fixture `Getting Started`
 
 
 test('Not really a test', async t => {
-	
+
 	await f.login()
 	await f.hide_status_bar()
 	await f.setTestSpeed(0.75)
@@ -29,13 +29,13 @@ test('Not really a test', async t => {
 
 	await f.click_module("Accounts")
 
-	await f.speak
+	.speak
 	`In the Accounts module, you will find documents like Sales Invoice, Purchase Invoice, etc.
 	 Let's check out Sales Invoice.`
 
-	await f.click_link("#List/Sales Invoice")
+	.click_link("#List/Sales Invoice")
 
-	await f.speak
+	.speak
 	`To create a new sales invoice, click on the New button.`
 
 	await f.click_primary_button("New")
