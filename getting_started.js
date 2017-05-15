@@ -3,12 +3,12 @@ import { f } from './common';
 
 
 fixture `Getting Started`
-    .page `http://erpnext.dev:8000/login`;
+    .page `http://selenium.erpnext.com/login`;
 
 
 test('Not really a test', async t => {
 
-	await f.login()
+	await f.login('jane_do@mailtothis.com', 'selenium')
 	await f.hide_status_bar()
 	await f.setTestSpeed(0.75)
 	await f.useVoice("slt")
@@ -29,13 +29,13 @@ test('Not really a test', async t => {
 
 	await f.click_module("Accounts")
 
-	.speak
+	await f.speak
 	`In the Accounts module, you will find documents like Sales Invoice, Purchase Invoice, etc.
 	 Let's check out Sales Invoice.`
 
 	.click_link("#List/Sales Invoice")
 
-	.speak
+	await f.speak
 	`To create a new sales invoice, click on the New button.`
 
 	await f.click_primary_button("New")

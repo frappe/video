@@ -22,10 +22,10 @@ export var f = {
 		});
 	},
 
-	login : async function () {
+	login : async function (username, password) {
 		await t
-			.typeText("#login_email", 'Administrator')
-			.typeText("#login_password", 'asdf1234')
+			.typeText("#login_email", username)
+			.typeText("#login_password", password)
 			.click(".btn-login")
 	},
 
