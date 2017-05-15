@@ -3,7 +3,7 @@ import { f } from './common';
 
 
 fixture `Getting Started`
-    .page `http://selenium.erpnext.com/login`;
+    .page `http://selenium.erpnext.com:8000/login`;
 
 
 test('Not really a test', async t => {
@@ -33,7 +33,7 @@ test('Not really a test', async t => {
 	`In the Accounts module, you will find documents like Sales Invoice, Purchase Invoice, etc.
 	 Let's check out Sales Invoice.`
 
-	.click_link("#List/Sales Invoice")
+	await f.click_link("#List/Sales Invoice")
 
 	await f.speak
 	`To create a new sales invoice, click on the New button.`
