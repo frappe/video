@@ -3,12 +3,12 @@ import { f } from './common';
 
 
 fixture `Getting Started`
-    .page `http://erpnext.dev:8000/login`;
+    .page `http://selenium.erpnext.com:8000/login`;
 
 
 test('Not really a test', async t => {
-	
-	await f.login()
+
+	await f.login('jane_do@mailtothis.com', 'selenium')
 	await f.hide_status_bar()
 	await f.setTestSpeed(0.75)
 	await f.useVoice("slt")
