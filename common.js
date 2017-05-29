@@ -59,7 +59,7 @@ export var f = {
 		await t.click("a[href='" + href + "']")
 	},
 
-	click_print_icon : async function (){
+	click_print_icon : async function () {
 		await t.click("i.fa-print")
 	},
 
@@ -68,17 +68,20 @@ export var f = {
 			return $('button.btn-primary:contains(' + btn_name + '):visible')[0];
 		 })
 		await t.click(button(btn_name))
+		await this.wait_for_ajax()
 	},
+
+	wait_for_ajax: Selector("body[data-ajax-state='complete']"),
 
 	close_modal : async function () {
 		const close_btn = Selector(() => { return $(".btn-modal-close:visible")[0];	})
 		await t.click(close_btn);
 	},
 
-	search : async function (result) {
+	search : async function (keyword, result) {
 		await t
 			.click("#navbar-search")
-			.typeText("#navbar-search", result.toLowerCase())
+			.typeText("#navbar-search", keyword)
 			.click( Selector("li").withText(result) )
 		return this;
 	},

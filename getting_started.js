@@ -78,11 +78,9 @@ test('Not really a test', async t => {
 	`Looks great! Lets submit this invoice.`
 
 	await f.click_primary_button("Edit")
-	await f.wait(1000)
 	await f.click_primary_button("Submit")
-	await f.wait(1000)
 	await f.click_primary_button("Yes")
-	await f.wait(1500)
+	await f.wait(1000)
 	await f.close_modal()
 	
 });
