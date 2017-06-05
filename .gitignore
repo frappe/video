@@ -35,3 +35,12 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# VSCode
+.vscode
+
+# Test file
+test.js
+
+# Temporary
+.esdoc.json

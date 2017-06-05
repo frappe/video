@@ -2,8 +2,8 @@ import { Selector } from 'testcafe';
 import { f } from './common';
 
 
-fixture `Getting Started`
-    .page `http://erpnext.dev:8000/login`;
+fixture ("Getting Started")
+    .page ("http://erpnext.dev:8000/login");
 
 
 test('Not really a test', async t => {
@@ -15,9 +15,9 @@ test('Not really a test', async t => {
 	await f.wait(1500)
 
 	await f.speak
-	`On the log in, you will see a dash board on your E R P Next account.
+	(`On the log in, you will see a dash board on your E R P Next account.
 	 Icons on the dash board will be visible based on the permissions assigned to you. 
-	 To access modules in E R P Next, click on the Explore icon.`
+	 To access modules in E R P Next, click on the Explore icon.`)
 
 	await f.click_icon('Explore')
 	await f.highlight_element('ul.module-sidebar-nav', 3000)
