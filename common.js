@@ -40,7 +40,7 @@ export var f = {
 
 	click_icon : async function (name) {
 		await t
-			.click("div.case-wrapper[data-name=" + name + "]")
+			.click("div.case-wrapper[data-name='" + name + "']")
 	},
 
 	wait_for_ajax: Selector("body[data-ajax-state='complete']"),
@@ -152,10 +152,16 @@ export var f = {
 			} else {
 				await t.typeText(field, value.toLowerCase(), {replace: true})
 			}
-			
+
 			await t.click(result(value))
 		}
-		else if (fieldtype == "Data") {
+		else if (fieldtype == "Select") {
+			var option = Selector("option[value='" + value + "']")
+			await t
+				.click(field)
+				.click(option)
+		}
+		else if (fieldtype == "Data" || "Currency" ) {
 			await t
 				.typeText(field, value, {replace: true})
 		}
@@ -195,7 +201,7 @@ export var f = {
 			var item = items[i - 1]
 			const item_code = Selector("[data-idx='" + i + "'] [data-fieldname='item_code']")
 			const qty = Selector("[data-idx='" + i + "'] [data-fieldname='qty']")
-			const rate = Selector("[data-idx='" + i + "'] [data-fieldname='rate']")		
+			// const rate = Selector("[data-idx='" + i + "'] [data-fieldname='rate']")		
 			
 			await t
 			.click(item_code)
