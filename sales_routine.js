@@ -3,14 +3,14 @@ import { f } from './common';
 
 
 fixture ("Sales Routine")
-    .page ("http://erpnext.dev:8000/login");
+    .page ("http://localhost:8000/login");
 
 
 test('Not really a test', async t => {
 
     // Init
-	await f.login('Administrator', 'asdf1234')
-	await f.wait(300).setTestSpeed(0.5)
+	await f.login('trumpcard@mailtothis.com', 'makeamericagreatagain')
+	await f.wait(300).setTestSpeed(0.75)
     
 	// Item
 	await f.click_icon('Item')
@@ -42,12 +42,8 @@ test('Not really a test', async t => {
 	await f.click_primary_button()
 	await f.fill_field("customer", "Jane Doe", "jan")
 	await f.fill_field("delivery_date", "05-06-2017")
-	var items = [{
-		code: "SM-G950FD",
-		qty: "2"
-	}]
-	await f.fill_items_table(items)
-	await f.fill_field("taxes_and_charges", "India VAT 5%")
+	
+	await f.fill_field("taxes_and_charges", "India VAT 5%", "5")
 	await f.click_primary_button()
 	await f.click_primary_button()
 	await f.wait(3000)	

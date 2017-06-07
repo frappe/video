@@ -39,11 +39,12 @@ export var f = {
 	},
 
 	click_icon : async function (name) {
-		await t
-			.click("div.case-wrapper[data-name='" + name + "']")
+		await t.click("div.case-wrapper[data-name='" + name + "']")
+		await this.wait_for_ajax()
 	},
 
 	wait_for_ajax: Selector("body[data-ajax-state='complete']"),
+
 	wait_for_modal: async function () {
 		await Selector("body.modal-open")
 		await t.wait(1000)
@@ -117,16 +118,39 @@ export var f = {
 		await t.click("i.fa-print")
 	},
 
+	// Helpers
+
+	get_route: async function () {
+		var route = await ClientFunction(() => {
+			if ($('body').hasClass('modal-open')) {
+				return ".modal-open"
+			} 
+			else if ( $(".grid-row-open").is(":visible") ) {
+				return ".grid-row-open";
+			}
+			else {
+				var route = frappe.get_route()
+				return ".page-container[data-page-route='" + route[0]
+				+ "/" + route[1] + "']"
+			}
+		})()
+
+		return route;
+	},
+
 	get_field: async function (fieldname) {
 		var field = await Selector(() => {
 			if ($('body').hasClass('modal-open')) {
 				return cur_dialog.fields_dict[fieldname].$input[0]
+			}
+			else if ($(".grid-row-open").is(":visible")) {
+				return 
 			} 
 			else {
 				var wrapper = cur_frm.fields_dict[fieldname].$wrapper
 				var fieldtype = wrapper.attr("data-fieldtype")
 				
-				if (fieldtype == "Text Editor") {
+				if (fieldtype == "Text Editor" || "Table") {
 					return wrapper[0]
 				}
 				return cur_frm.fields_dict[fieldname].$input[0]
@@ -191,6 +215,29 @@ export var f = {
 		if (field.checked) {
 			await t.click(label(fieldname))
 		}
+	},
+
+	// Child table functions
+
+	open_row: async function (table_name, row) {
+		var table = await this.get_field(table_name)
+		var open_btn = Selector(table).find("[data-idx='" + row + "'] .btn-open-row")
+		await t.click(open_btn)
+	},
+
+	add_row: async function (table_name) {
+		var table = await this.get_field(table_name)
+		var add_btn = Selector(table).find(".grid-add-row")
+		await t.click(add_btn)
+		await f.wait(500)
+	},
+
+	insert_above: async function () {
+		await t.click(".grid-row-open .grid-insert-row")
+	},
+
+	insert_below: async function () {
+		await t.click(".grid-row-open .grid-insert-row-below")
 	},
 
 	fill_items_table : async function (items){
