@@ -8,17 +8,17 @@ fixture ("Getting Started")
 
 test('Not really a test', async t => {
 
-	await f.login('Administrator', 'asdf1234')
-	await f.hide_status_bar()
-	await f.setTestSpeed(0.75)
+	// Init
+	await f.login('Administrator', 'password')
+	await f.setTestSpeed(0.75).wait(500)
 	await f.use_voice("slt")
-	await f.wait(1500)
 
 	await f.speak
 	(`On the log in, you will see a dash board on your E R P Next account.
 	 Icons on the dash board will be visible based on the permissions assigned to you. 
 	 To access modules in E R P Next, click on the Explore icon.`)
 
+	 // Explore
 	await f.click_icon('Explore')
 	await f.highlight_element('ul.module-sidebar-nav', 3000)
 
@@ -38,13 +38,13 @@ test('Not really a test', async t => {
 	await f.speak
 	`To create a new sales invoice, click on the New button.`
 
-	await f.click_primary_button("New")
+	await f.click_primary_button()
 
 	await f.speak
 	`Let’s quickly create a new Sales Invoice.
 	 Select a Customer.`
 
-	await f.fill_field("customer", "Link", "Google Inc")
+	await f.fill_field("customer", "Google Inc")
 
 	await f.speak
 	`Select an item and enter it's quantity.`
@@ -60,26 +60,24 @@ test('Not really a test', async t => {
 	`Item’s rate will be automatically fetched from the Item master.
 	 Select your tax template.`
 
-	await f.fill_field("taxes_and_charges", "Link", "India VAT 5%")
+	await f.fill_field("taxes_and_charges", "India VAT 5%")
 
 	await f.speak
 	`We can now save the Sales Invoice.`
 
-	await f.click_primary_button("Save")
+	await f.click_primary_button()
 
 	await f.speak
 	`Let’s check the print preview of this Invoice.`
 
 	await f.click_print_icon()
-
-	await f.wait(1000)
 	
 	await f.speak
 	`Looks great! Lets submit this invoice.`
 
-	await f.click_primary_button("Edit")
-	await f.click_primary_button("Submit")
-	await f.click_primary_button("Yes")
+	await f.click_primary_button()
+	await f.click_primary_button()
+	await f.click_primary_button()
 	await f.wait(1000)
 	await f.close_modal()
 	

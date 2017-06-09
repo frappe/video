@@ -41,6 +41,7 @@ jspm_packages
 
 # Test file
 test.js
+testing.js
 
 # Temporary
 .esdoc.json

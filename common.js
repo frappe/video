@@ -144,9 +144,15 @@ export var f = {
 				return cur_dialog.fields_dict[fieldname].$input[0]
 			}
 			else if ($(".grid-row-open").is(":visible")) {
-				return 
+				var wrapper = $(".grid-row-open div[data-fieldname='" + fieldname + "']:visible")
+				var fieldtype = wrapper.attr("data-fieldtype")
+				if (fieldtype == "Text Editor" || "Table") {
+					return wrapper[0]
+				}
+				return wrapper.find("input")[0]				
+
 			} 
-			else {
+			else {	
 				var wrapper = cur_frm.fields_dict[fieldname].$wrapper
 				var fieldtype = wrapper.attr("data-fieldtype")
 				
