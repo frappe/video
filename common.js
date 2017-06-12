@@ -166,7 +166,7 @@ export var f = {
 		return field;
 	},
 
-	fill_field: async function (fieldname, value, keyword=false) {
+	fill_field: async function (fieldname, value, keyword) {
 		var field = await this.get_field(fieldname)
 		var fieldtype = field.getAttribute("data-fieldtype")
 
@@ -244,6 +244,10 @@ export var f = {
 
 	insert_below: async function () {
 		await t.click(".grid-row-open .grid-insert-row-below")
+	},
+
+	close_row: async function () {
+		await t.pressKey("esc")
 	},
 
 	fill_items_table : async function (items){

@@ -36,16 +36,17 @@ test('Not really a test', async t => {
 
 	// await f.goto_desk()
 
-	// // Sales Order
+	// Sales Order
 
 	await f.click_icon("Sales Order")
 	await f.click_primary_button()
 	await f.fill_field("customer", "Jane Doe", "jan")
 	await f.fill_field("delivery_date", "05-06-2017")
-	await f.add_row("items")
 	await f.open_row("items", "1")
 	await f.fill_field("item_code", "SM-G950FD", "Samsung")
 	await f.fill_field("qty", "2")
+	await f.wait(500)
+	await f.close_row()
 	await f.fill_field("taxes_and_charges", "India VAT 5%", "5")
 	await f.click_primary_button()
 	await f.click_primary_button()
