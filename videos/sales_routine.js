@@ -1,5 +1,5 @@
 import { Selector } from 'testcafe';
-import { f } from './common';
+import { f } from '../lib';
 
 
 fixture ("Sales Routine")
