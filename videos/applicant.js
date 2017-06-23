@@ -86,10 +86,10 @@ test('Getting started', async t => {
 	await f.speak
 	 	(`Let's submit the Student Application`)
 
-	await f.click_primary_button()
+	await f.click_primary_button('Submit')
 	await f.wait(1)
 				
-	await f.click_primary_button()
+	await f.click_primary_button('Yes')
 
 	await f.speak
 	 	(`After an application is submitted, you can review it and approve or reject it.`)
