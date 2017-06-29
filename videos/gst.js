@@ -1,5 +1,5 @@
 import { Selector } from 'testcafe';
-import { f } from '../lib';
+import f from '../lib';
 
 
 fixture("Getting Started")
@@ -241,53 +241,53 @@ test('Getting started', async t => {
 	await f.close_modal()
 
 	await f.goto_desk()
-	
+
 	//Reports
-	
+
 	await f.speak
 	`In E R P Next, reports for filing G S T tax returns are readily available. Check Accounts module for the reports.`
-	
+
 	await f.search('accou', 'Open Accounts')
 
 	await f.scroll_to_element('.section-head:contains("Goods and Services Tax (GST India)")')
-	
+
 	await f.hover_element('div', 'Goods and Services Tax (GST India)', 0.5)
-	
+
 	await f.hover_element('div', 'GST Sales Register', 0.5)
-	
+
 	await f.hover_element('div', 'GST Itemised Sales Register ', 0.5)
-	
+
 	await f.speak
 	`Check this report for filing your sales tax returns`
-	
+
 	await f.click_link('#query-report/GST Itemised Sales Register')
-	
+
 	await f.pause(1)
-	
+
 	await f.speak
 	`Same way, you can check G S T Purchase Register report for filing purchase returns.`
-	
+
 	//portal
-	
+
 	await f.goto_desk()
-	
+
 	await f.speak
-	`In E R P Next, you can invite your Customers and Suppliers to update G S T number for their companies from your E R P portal. 
-	
+	`In E R P Next, you can invite your Customers and Suppliers to update G S T number for their companies from your E R P portal.
+
 	To send them an email invite, go to G S T Settings.`
-	
+
 	await f.search('gst', 'GST Settings')
-	
+
 	await f.speak
 	`Here you will get the count of addresses with and without G S T Number. To send reminder to contact without G S T number, click here.`
-	
+
 	await f.click_toolbar_button('Send GST Update Reminder')
 
-	await f.close_modal()	
+	await f.close_modal()
 
 	await f.speak
 	`Let's check how Customer will login to your E R P Next and update G S T number in the respective address master.`
-	
+
 });
 
 
