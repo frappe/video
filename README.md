@@ -4,16 +4,13 @@
 
 1. Minimum NodeJS v7 required
 
-1. Install Node.JS (using Homebrew/Linuxbrew)
-
-        brew install node
-        
+1. Install Node.JS
 
 1. Clone this repository (Ensure that `git` is installed) :
 
-        git clone https://github.com/sagarvora/testcafe-video.git
+        git clone https://github.com/frappe/video.git frappe-video
 
-1. `cd` into **testcafe-video** directory and run `npm install`
+1. `cd` into **frappe-video** directory and run `npm install`
 
 ## How to use
 
