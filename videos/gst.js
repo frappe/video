@@ -12,7 +12,7 @@ test('Getting started', async t => {
     await f.use_voice("veena")
 	await f.setTestSpeed(0.75)
 
-    await f.toggle_speak(true)
+    await f.toggle_speak(false)
 
     await f.speak
         (`Hi. Welcome to E R P Next video tutorial. In this video, we will learn how to manage invoicing as per the Goods and Services tax in India, also known as G S T.`)
@@ -289,5 +289,3 @@ test('Getting started', async t => {
 	`Let's check how Customer will login to your E R P Next and update G S T number in the respective address master.`
 
 });
-
-
