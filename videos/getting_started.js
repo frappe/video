@@ -156,5 +156,4 @@ test('Getting started with ERPNext', async t => {
 			Hope you found this video tutorial useful. For more details and trial account, check e r p next dot com. 
 			Thanks for watching.
 			`)
-		 
 });
