@@ -14,7 +14,7 @@ test('Selling Cycle in ERPNext', async t => {
     await f.toggle_speak(true)
 	
 	await f.speak(`
-		
+
 		Hi.
 
 		Welcome to E R P Next tutorial.
@@ -34,25 +34,23 @@ test('Selling Cycle in ERPNext', async t => {
 	await f.click_dropdown_item('Quotation')
 
 	await f.pause(1)
-		
+
 	await f.speak(`Enter Quotation I D.`)
 
-	await f.fill_field("search_term","19")
+	await f.fill_field("search_term","24")
 
 	await f.pause(1)
 
 	await f.click_primary_button("Get Items")
 
 	await f.speak(`
-			We have most of the details in this Sales Order fetched from the Quotation. 
+			We have most of the details in this Sales Order fetched from the Quotation.
 			Enter Expected Delivery Date.
 			`)
 
-	await f.fill_field("Delivery Date", "30-07-2017")
+	await f.fill_field("Delivery Date", "05-08-2017")
 
 	await f.open_row("items",1)
-
-	//await f.scroll_to_section("Warehouse and Reference")
 
 	await f.hover_element("label", "Delivery Warehouse")
 
@@ -86,12 +84,12 @@ test('Selling Cycle in ERPNext', async t => {
 	await f.click_primary_button('Edit')
 	await f.click_primary_button('Submit')
 	await f.click_primary_button('Yes')
-		
+
 	await f.click_toolbar_button("Make")
 
 	await f.speak(`
-			Once a sales order is submitted, you can create Delivery Note, Sales Invoice and advance payment entry against it. 
-			When actually shipping items to the Customer, Delivery Note will be created.
+			Once a sales order is submitted, you can create Delivery Note, Sales Invoice and advance payment entry against it.
+			When actually shipping items to the Customer, create a Delivery Note from Sales Order.
 		`)
 
 	await f.click_dropdown_item("Delivery")
@@ -114,9 +112,9 @@ test('Selling Cycle in ERPNext', async t => {
 		`)
 
 	await f.hover_element("label", "From Warehouse")
-		
+
 	await f.hover_element("label", "Serial No")
-		
+
 	await f.hover_element("label", "Batch No")
 
 	await f.speak(`
@@ -145,11 +143,12 @@ test('Selling Cycle in ERPNext', async t => {
 	await f.click_toolbar_button("Make")
 
 	await f.speak(`
-			Now let's check how to create Sales Invoice from a Delivery Note. You will also create Sales invoice from the Sales Order.
+			Now let's check how to create Sales Invoice from a Delivery Note. You can also create Sales invoice from the Sales Order.
 			`)
 
 	await f.click_dropdown_item("Invoice")
 
+	
 	await f.speak(`
 			Sales Invoice is an accounting transaction. On submission of a Sales Invoice, posting will be done in the accounts like receivable, income, taxes etc.
 			Let's assume that this is accrual sale, and the payment will be received at a later date.
@@ -172,6 +171,22 @@ test('Selling Cycle in ERPNext', async t => {
 	await f.speak(`
 			Select taxes and charges applicable on this invoice. Let's save and submit this invoice.
 			`)
+		
+	await f.scroll_to_section("More Information")
+		
+	//await f.click_section("Accounting Details")
+		
+	await f.pause(1)
+		
+	await f.hover_element("label","Debit To")
+		
+	await f.speak(`
+			From here, you can select a receivable account in which outstanding payment will be updated.
+			`)
+	
+	await f.speak(`
+			Let's save and submit this invoice.
+				`)
 
 	await f.click_primary_button('Save')
 	await f.click_primary_button('Submit')
@@ -225,7 +240,7 @@ test('Selling Cycle in ERPNext', async t => {
 			`)
 	await f.fill_field("reference_no","BOI7868467")
 		
-	await f.fill_field("reference_date","24-07-2017")
+	await f.fill_field("reference_date","31-07-2017")
 		
 	await f.speak(`
 			Now, we can save and submit this payment entry.
@@ -238,6 +253,7 @@ test('Selling Cycle in ERPNext', async t => {
 	await f.speak(`
 			Once full payment is received from the Customer, status of Sales Invoice will be updated as Paid. And status of Delivery Note and Sales order is updated as completed.
 				`)
+		
 	await f.speak(`
 			Hope you found this video tutorial useful. For more details and free sign up, check e r p next dot com.
 		Thanks for watching.
