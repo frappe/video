@@ -65,7 +65,7 @@ test('Getting started', async t => {
     await f.speak
         (`let's attach an image of applicant here.`)
 
-    // await f.set_sidebar_image('./images/Hermione Granger.png')
+   	await f.set_sidebar_image('./images/Hermione Granger.png')
 
     await f.click_primary_button()
 
