@@ -203,5 +203,4 @@ test('Tree master in ERPNext', async t => {
 		  Hope you found this video tutorial useful. For more details and free sign up, check e r p next dot com.
 		  Thanks for watching.
 		  `)
-
 });
