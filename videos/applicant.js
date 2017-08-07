@@ -100,7 +100,7 @@ test('Getting started', async t => {
  		(`To allow students to apply online, you can create a Web Form for Student Application on your E R P Next website.`)
 	
 	await f.search("web", "Web Form List")
-
+  
 	await f.pause(0.5)
 	
 	await f.click_list_item("Student Applicant")
