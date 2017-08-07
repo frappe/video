@@ -69,8 +69,8 @@ test('Getting started', async t => {
 
     await f.speak
         (`let's attach an image of this applicant.`)
-	
-   	await f.set_sidebar_image('./images/Hermione Granger.png')
+
+    await f.set_sidebar_image('./images/Hermione Granger.png')
 
     await f.click_primary_button('Save')
 
@@ -100,7 +100,7 @@ test('Getting started', async t => {
  		(`To allow students to apply online, you can create a Web Form for Student Application on your E R P Next website.`)
 	
 	await f.search("web", "Web Form List")
-
+  
 	await f.pause(0.5)
 	
 	await f.click_list_item("Student Applicant")
