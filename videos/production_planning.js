@@ -25,25 +25,29 @@ test('Bill of Materials in ERPNext', async t => {
 
 	await f.search ("production pl", "Production Planning Tool")
 		
-	await f.hover_element("label", "Get Items From")
+	//await f.hover_element("label", "Get Items From")
 
 	await f.speak(`
 			Select transaction from where items to be manufactured should be pulled. You can either pull manufacturing item from
 			Sales Order or Material Request.
 			`)
 		
-	await f.fill_field("get_item_from","Sales Order")
+	await f.fill_field("get_items_from","Sales Order")
 		
 	await f.speak(`You can apply filters to fet specific result.`)
 		
-	await f.fill_field("item","samsun", "Samsung On5 Pro (Gold)")
+	await f.fill_field("fg_item","samsun", "Samsung On5 Pro (Gold)")
 		
-	await f.click_link("button", "Get Sales Orders")
+	await f.fill_field("from_date","samsun", "08-08-2017")
+		
+	await f.fill_field("to_date","samsun", "08-08-2017")
+		
+	await f.click_element("button", "Get Sales Orders")
 		
 	await f.speak(`These are the Sales Order made for items selected in the filter. To pull manufacturing item from Production,
 			click on Get Items button.`)
 		
-	await f.click_link("button", "Get Items")
+	await f.click_element("button", "Get Items")
 		
 	await f.scroll_to_section("Select Items")
 		
@@ -57,6 +61,8 @@ test('Bill of Materials in ERPNext', async t => {
 		`)
 		
 	await f.fill_field("planned_start_date", "10-08-2017 14:48:33")
+		
+	await f.close_row()
 	
 	await f.scroll_to_section("Production Orders")
 		
@@ -64,9 +70,9 @@ test('Bill of Materials in ERPNext', async t => {
 			Click on Create Production Orders to create a Production Order for an item selected in the above table.
 		`)
 		
-	await f.click_link("button", "Create Production Orders")
+	await f.click_element("button", "Create Production Orders")
 		
-	await f.click_link("button", "Close")
+	await f.click_element("button", "Close")
 		
 	await f.speak(`
 			Before starting Production Order, we can also do Material Planning to check if we have enough raw-materials required
@@ -103,9 +109,9 @@ test('Bill of Materials in ERPNext', async t => {
 		
 	await f.click_link("button", "Create Material Requests")
 		
-	await f.speak(`This is a notification, you will get Material Request I D.`)
+	await f.speak(`If Material Requests are created, then their I Ds will be visible in this notification.`)
 		
-	await f.click_link("button", "Close")
+	await f.click_element("button", "Close")
 	
 	await f.speak(`
 			Hope you found this video tutorial useful. For more details and free sign up, check e r p next dot com.
