@@ -11,7 +11,7 @@ test('Bill of Materials in ERPNext', async t => {
 	await f.setTestSpeed(0.75).wait(500)
 	await f.use_voice("samantha")
 
-    await f.toggle_speak(true)
+    await f.toggle_speak(false)
 	
 	await f.speak(`
 
@@ -42,20 +42,31 @@ test('Bill of Materials in ERPNext', async t => {
 	await f.fill_field("to_date","samsun", "08-08-2017")
 
 	await f.click_element("button", "Get Sales Orders")
+		
+	await f.scroll_to_section("Select Items")
 
 	await f.speak(`To pull manufacturing item from the Sales Order, click on Get Items button.`)
 
 	await f.click_element("button", "Get Items")
 
-	await f.scroll_to_section("Select Items")
-
 	await f.speak(`Now, we have manufacturing item fetched from Sales Order to Production Planning Tool.`)
 
 	await f.open_row("items", 1)
+		
+	await f.hover_element("label","BOM No")
 
 	await f.speak(`
-			For the manufacturing item, default Bill of Material has been updated. Also, sales order quantity has been updated
-			as planned quantity. Update Planned Start Date for manufacturing.
+			For the manufacturing item, default Bill of Material has been updated.
+		`)
+		
+	await f.hover_element("label","Planned Qty")
+		
+	await f.speak(`
+			Also, sales order quantity has been updated as planned quantity.
+			`)
+		
+	await f.speak(`
+			Update Planned Start Date for manufacturing.
 		`)
 
 	await f.fill_field("planned_start_date", "10-08-2017 10:00:00")
