@@ -11,7 +11,7 @@ test('Bill of Materials in ERPNext', async t => {
 	await f.setTestSpeed(0.75).wait(500)
 	await f.use_voice("samantha")
 
-    await f.toggle_speak(false)
+    await f.toggle_speak(true)
 	
 	await f.speak(`
 
@@ -25,11 +25,11 @@ test('Bill of Materials in ERPNext', async t => {
 
 	await f.search ("production pl", "Production Planning Tool")
 
-	//await f.hover_element("label", "Get Items From")
-
 	await f.speak(`
 			Select a transaction from where manufacturing item should be fetched.
 			`)
+		
+	await f.pause(1)
 
 	await f.fill_field("get_items_from","Sales Order")
 
@@ -42,6 +42,10 @@ test('Bill of Materials in ERPNext', async t => {
 	await f.fill_field("to_date","samsun", "08-08-2017")
 
 	await f.click_element("button", "Get Sales Orders")
+		
+	await f.speak(`
+			This is a sales order created for the manufacturing item.
+		`)
 		
 	await f.scroll_to_section("Select Items")
 
@@ -56,7 +60,7 @@ test('Bill of Materials in ERPNext', async t => {
 	await f.hover_element("label","BOM No")
 
 	await f.speak(`
-			For the manufacturing item, default Bill of Material has been updated.
+			For the manufacturing item, default Bill of Material has been fetched.
 		`)
 		
 	await f.hover_element("label","Planned Qty")
@@ -81,9 +85,9 @@ test('Bill of Materials in ERPNext', async t => {
 
 	await f.click_element("button", "Create Production Orders")
 
-	await f.close_modal()
-
 	await f.speak(`A draft Production Order has been created.`)
+		
+	await f.close_modal()
 
 	await f.speak(`
 			Before starting the production, we should also do Material Planning to check if required quantity of raw-materials
@@ -96,13 +100,13 @@ test('Bill of Materials in ERPNext', async t => {
 			Click here to download a spreadsheet file which will provide details of raw-material items required for the production,
 			and their actual stock available in the Warehouse.
 				`)
+		
+	await f.fill_field("purchase_request_for_warehouse", "Stores - GTPL", "stor")
 
 	await f.speak(`
 			Raw-material items for which stock shortage is found, you can raise Material Request for them right from here.
 			Select a Warehouse for which Material Request will be raised for the shortage item.
-		`)
-
-	await f.fill_field("purchase_request_for_warehouse", "Stores - GTPL", "stor")
+		`)	
 
 	await f.hover_element("label", "Create for full quantity, ignoring quantity already on order")
 
@@ -112,13 +116,13 @@ test('Bill of Materials in ERPNext', async t => {
 
 	await f.speak(`Set value in these field as per your preference.`)
 
-	await f.hover_element("label", "Create Material Requests")
+	await f.hover_element("button", "Create Material Requests")
 
 	await f.speak(`
 			Click here to create Material Request for the shortage raw materials.
 		`)
 
-	await f.click_link("button", "Create Material Requests")
+	await f.click_element("button", "Create Material Requests")
 
 	await f.speak(`If Material Requests are created, then their I Ds will be visible in this notification.`)
 
@@ -132,11 +136,11 @@ test('Bill of Materials in ERPNext', async t => {
 		
 	await f.click_list_item("Samsung On5 Pro (Gold)")
 		
-	await f.pause(1)
+	await f.pause(2)
 	
 	await f.click_print_icon()
 	
-	await f.scroll(100)
+	await f.scroll(250)
 	
 	await f.speak(`After updating values in the mandatory fields, you can submit this Production Order.`)
 	
