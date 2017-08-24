@@ -22,24 +22,24 @@ test(video_title, async t => {
 		Hi.
 
 		Welcome to E R P Next tutorials.
-		
+
 		On saving any document in E R P Next, a unique I D is assigned for it.`)
-		
+
 	await f.add_slide({
 		title: "Renaming and Merging Documents"
 	})
-		
+
 	await f.speak(`
-		
-		For some of the document types, like Customer, Supplier, Item, Accounts,  you can further this unique I D 
+
+		For some of the document types, like Customer, Supplier, Item, Accounts,  you can further this unique I D
 		by using Renaming feature.
-		
+
 		Also, you can use renaming feature to merge two documents.`)
-	
+
 	await f.remove_slide()
-		
+
 	await f.speak(`
-		
+
 		Let's check how to rename a customer.
 		`)
 
@@ -72,33 +72,33 @@ test(video_title, async t => {
 	await f.hover_element("h1", "Mansa Foods Pvt. Ltd.")
 
 	await f.speak(`Customer I D has been renamed.
-		
+
 			On the same lines, you can also rename other documents for which renaming is permitted.`)
-		
+
 	await f.add_slide({
 			title: "Renaming in Tree Masters"
 		})
-	
+
 	await f.speak(`
 		Now, let's check how to rename a masters which are maintained in a tree structure.
 		`)
-		
+
 	await f.remove_slide()
 
 	await f.search("chart of ac", "Open Chart of Accounts")
 
 	await f.speak(`Expand the tree, and click on the Account to be renamed.`)
-		
+
 	await f.click_tree_node('Application of Funds (Assets) - GTPL')
 
 	await f.click_tree_node('Current Assets - GTPL')
-		
+
 	await f.click_tree_node('Bank Accounts - GTPL')
-		
+
 	await f.click_tree_node('Standard Bank - GTPL')
 
 	await f.speak(`Let's assume that we need to rename this account. Click on Rename.`)
-		
+
 	await f.click_tree_node_option("Rename")
 
 	await f.speak(`Enter new name for this account.`)
@@ -116,11 +116,13 @@ test(video_title, async t => {
  	await f.click(link)
 
 	await f.speak(`This is an renamed account.
-		
+
 			Once a document is renamed, its value is also updated in other linked transactions. For example,
-			Once a customer is renamed, new customer name will be updated in the existing Quotation and Orders 
+			Once a customer is renamed, new customer name will be updated in the existing Quotation and Orders
 			for that Customer.`)
 				
+	await f.search("rename to", "Rename Tool")
+	
 	await f.add_slide({
 			title: "Bulk Renaming using Rename Tool"
 		})
@@ -162,7 +164,7 @@ test(video_title, async t => {
 		
 	await f.click_primary_button("Rename")
 		
-	await f.speak(`Customer I Ds has been renamed. Using this tool, you can also rename other document in bulk.
+	await f.speak(`Customer I Ds has been renamed. Using this tool, you can also rename other masters in bulk.
 		`)
 		
 	await f.speak(`

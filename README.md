@@ -278,7 +278,7 @@ Following is one more example of how to scroll to tax section in a document, whi
 
 `await f.scroll_to_element("'.tax-break-up")`
 
-#### Click Tree Node and click option
+#### Click Tree Node and Tree Node Option
 
 To navigate in a master rendered in a tree structure, you can use following functions.
 
