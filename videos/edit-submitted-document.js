@@ -28,11 +28,14 @@ test(video_title, async t => {
 
 	await f.add_slide({
 		title: "Edit Submitted Document",
+		sub_heading: "Test sub-heading",
 		bullet_points: [
 			"Cancel",
 			"Amend",
 		],
 	})
+	
+	await f.pause(3)
 
 	await f.speak(`
 		To be able to edit any submitted document, you should first cancel, and then amend it.
