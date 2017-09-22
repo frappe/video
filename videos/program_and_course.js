@@ -64,7 +64,9 @@ test(video_title, async t => {
 		
 	await f.fill_field("Program Name", "Bachelor of Computer Science - First Year")
 		
-	await f.fill_field("Program Code", "FY-BCS")
+	await f.fill_field("Program Code", "BCS-FY")
+		
+	await f.fill_field("Department","Information Technology", "inform")
 		
 	await f.speak(`Save Program.`)
 		
@@ -100,7 +102,7 @@ test(video_title, async t => {
 			
 	await f.speak(`Enter Course Name and Course Code.`)
 			
-	await f.fill_field("Course Name", "Object Oriented Programing - C++")
+	await f.fill_field("Course Name", "Object Oriented Programming - C++")
 			
 	await f.fill_field("Course Code", "BCS-FY-OOPC")
 			
@@ -112,7 +114,44 @@ test(video_title, async t => {
 			Once a course a project is saved, you can link it with a Program.	
 			`)
 			
-	await f.click
+	await f.click_primary_button("Save")
+		
+	await f.speak(`Like this, you can add all the courses for a Program. Once completed, you can update 
+				Course in a program.
+				`)
+		
+	await f.search("program", "Program List")
+		
+	await f.click_list_item("BCS-FY")
+		
+	await f.scroll_to_section("Course")
+		
+	await f.add_row("courses")
+		
+	await f.open_row("courses", 1)
+		
+	await f.fill_field("Course","BCS-FY-OOPC" ,"OOPC")
+		
+	await f.fill_field("Mandatory")
+		
+	await f.close_row()
+		
+	await f.speak(`likewise, in the program master, you can update all the relevant courses.`)
+		
+	await f.add_row("courses")
+		
+	await f.open_row("courses", 2)
+		
+	await f.fill_field("Course","BMath-BCS-FY" ,"bmath")
+		
+	await f.fill_field("Mandatory")
+		
+	await f.close_row()
+		
+	await f.click_primary_button("Save")
+		
+	await f.speak(`In the next video, we will learn how to use Program and course in the operations
+			student enrolment and course scheduling.`)
 	
 	await f.speak(`
 			Hope you found this video tutorial useful. For more details and free sign up, check e r p next dot com.

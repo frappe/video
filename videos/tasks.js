@@ -174,7 +174,7 @@ test(video_title, async t => {
 		
 	await f.speak(`Let's say three hours was spent on this Project.`)
 		
-	await f.fill_field("hrs", "3")
+	await f.fill_field("Hrs", "3")
 	
 	await f.speak(`End Time is auto updated based on start time and Hours spent.`)
 		
