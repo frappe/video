@@ -194,7 +194,7 @@ test(video_title, async t => {
 		
 	await f.go_back()
 		
-	await f.pause(1)
+	await f.pause(1)s
 		
 	await f.go_back()
 		

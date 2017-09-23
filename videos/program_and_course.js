@@ -72,7 +72,7 @@ test(video_title, async t => {
 		
 	await f.click_primary_button("Save")
 		
-	await f.speak(`If the syllabus for the program is defined based on term, then you should create each term as a Program.`)
+	await f.speak(`If the syllabus for the program is defined based on the term, then you should create a program for each term.`)
 		
 	await f.pause(4)
 		
@@ -86,7 +86,7 @@ test(video_title, async t => {
 
 	await f.remove_slide()
 			
-	await f.speak(`For example, these are the subjects in the first year of Customer Science program. Add them as a course.`)
+	await f.speak(`Suppose these are the subjects in the first year of Customer Science program. Add them as a course.`)
 			
 	await f.pause(3)
 			
@@ -149,6 +149,10 @@ test(video_title, async t => {
 	await f.close_row()
 		
 	await f.click_primary_button("Save")
+		
+	await f.speak(`This is an example of how Program and Courses will be created in an school.`)
+		
+	await f.pause(3)
 		
 	await f.speak(`In the next video, we will learn how to use Program and course in the operations
 			student enrolment and course scheduling.`)
