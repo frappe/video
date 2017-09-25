@@ -71,7 +71,7 @@ test(video_title, async t => {
 		
 	await f.scroll_to_section("Tasks")
 		
-	await f.speak(`Create Task for this Project which can be assigned to the .`)
+	await f.speak(`Create Task for this Project which can be assigned to the individuals.`)
 		
 	await f.add_row("tasks")
 
@@ -166,8 +166,8 @@ test(video_title, async t => {
 	await f.click_section("Costing and Billing")
 
 	await f.speak(`
-		One  Project is created, it can be selected in the sales and purchase transactions as well.
-		This will help you track project costing and profitability.
+		Once a Project is created, it can be selected in the sales and purchase transactions.
+		This will help in tracking project costing and profitability.
 			`)
 		
 	await f.hover_element("label","Total Costing Amount (via Timesheets)")

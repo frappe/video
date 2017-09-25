@@ -13,7 +13,7 @@ test(video_title, async t => {
 	await f.setTestSpeed(0.75).wait(500)
 	await f.use_voice("Samantha")
 
-    await f.toggle_speak(false)
+    await f.toggle_speak(true)
 	
 	await f.speak(`
 
@@ -24,7 +24,7 @@ test(video_title, async t => {
 		In this video, we will learn how to add a new Student in the schools module.`)
 		
 	await f.add_slide({
-		title: "Students",
+		title: "Student",
 			})
 
 	await f.pause(3)
@@ -35,17 +35,18 @@ test(video_title, async t => {
 			
 	await f.click_icon("Student")
 			
-	await f.scroll(300)
+	await f.scroll(260)
 			
-	await f.speak(`These are existing students.`)
+	await f.speak(`These are the existing students.`)
 			
 	await f.pause(1)
 	
-	await f.scroll(0)		
+	await f.scroll(0)
 	
-	await f.hover_element("button", "New")
-	
-	await f.speak(`Click here to add a new student.`)
+	await f.speak(`If you created Student Applicant, you can also create a student from there.
+			
+			For now, let's directly create a new student from here.
+			`)
 			
 	await f.click_primary_button("New")
 			
@@ -61,15 +62,17 @@ test(video_title, async t => {
 			
 	await f.scroll(0)
 			
-	await f.speak(`Once student is saved, you can also attach an student image.`)
+	await f.speak(`Once a student is saved, you can select student's image.`)
 			
-	await f.set_sidebar_image('./images/Hannah Abbott.jpg')
+	await f.set_sidebar_image('./images/hannah_abbott.jpg')
 			
 	await f.click_primary_button("Upload")
 			
-	await f.speak(`You can add more details about the student like contact details, birth details etc.`)
+	await f.pause(1)
 			
-	await f.fill_field("Student Mobile Number", "+1 478584864748")
+	await f.speak(`You can add more details about a student in the following sections.`)
+			
+	await f.fill_field("Student Mobile Number", "+1 4785848647")
 			
 	await f.fill_field("Date of Birth", "05-05-1998")
 			
@@ -87,9 +90,11 @@ test(video_title, async t => {
 			
 	await f.open_row("guardians", 1)
 	
-	await f.fill_field("Guardian", "GARD0001","001")
+	await f.fill_field("Guardian", "GARD0001","gard0001")
 			
-	await f.fill_field("Relation", "Mother")
+	await f.pause(1)
+			
+	//await f.fill_field("Relation", "Mother")
 			
 	await f.close_row()
 			
@@ -103,6 +108,8 @@ test(video_title, async t => {
 			
 	await f.click_primary_button("Save")
 			
+	await f.scroll(0)
+			
 	await f.speak(`Once an student is saved, you can create other entries for it like Program Enrollment.`)
 			
 	await f.hover_element(".badge-link.small", "Program Enrollment")
@@ -111,7 +118,7 @@ test(video_title, async t => {
 			
 	await f.speak(`Student Group`)
 
-	await f.hover_element(".badge-link.small", "Student Attendace")
+	await f.hover_element(".badge-link.small", "Student Attendance")
 			
 	await f.speak(`Student Attendance`)
 	
