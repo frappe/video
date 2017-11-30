@@ -222,6 +222,18 @@ Example, if you want to make a Sales Invoice from Sales Order, then use:
 `await f.click_toolbar_button("Make")` and then
 `await f.click_dropdown_item("Invoice")`
 
+#### Click Print Icon
+
+Use this function to click on the Print Icon (next to Menu button).
+
+`await f.click_print_icon()`
+
+#### Close Modal
+
+If modal open on the form which doesn't have (blue) primary button, but grey one, then use this function to close it.
+
+`await f.close_modal()`
+
 ### Form Child Table
 
 #### Open Row
