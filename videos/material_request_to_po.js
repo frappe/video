@@ -38,7 +38,7 @@ test('Material Request to Purchase Order', async t => {
 		
 	await f.click('[data-fieldname="material_request_type"]')
 		
-	// await f.fill_field("Type", "Purchase")
+	await f.fill_field("Type", "Purchase")
 		
 	await f.speak(`
 		. In material Request, you can pull items from different sources.
