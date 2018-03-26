@@ -17,7 +17,7 @@ test('Material Request to Purchase Order', async t => {
 		
 		Close password notification.
 		
-		Hi.
+		Hi
 
 		Welcome to E R P Next tutorial.
 
