@@ -317,3 +317,22 @@ To scroll to a specific field, you can enter both Field Name or Field Label.
 Some document types has buttons within a form. You can check Production Planning Tool for the reference. To click on a button within a form, use:
 
 `await f.click_form_button('Button Label')`
+
+---
+
+#### Multi Output setup for MacOS
+
+1. Install Soundflower from https://github.com/mattingalls/Soundflower/releases/
+2. Open Audio MIDI Setup from system preferences.
+3. Create the '+' button and select 'Create Multi-Output Device'.
+4. Right click on 'Multi-Output Device' and select 'Use this device for sound output'.
+
+![image](https://user-images.githubusercontent.com/910238/38191657-442e3eca-3687-11e8-8a99-1eb3cc25e271.png)
+
+5. Check Soundflower (2ch) list item
+
+![image](https://user-images.githubusercontent.com/910238/38191524-bf9fb3c8-3686-11e8-81f0-291f4df5be57.png)
+
+6. Now, while recording videos in Quicktime Player set the audio channel to Soundflower
+
+![image](https://user-images.githubusercontent.com/910238/38191624-1ac47dce-3687-11e8-829f-b2e8a835e30e.png)
