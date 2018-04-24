@@ -1,5 +1,5 @@
 import { Selector } from 'testcafe';
-import f from '../lib';
+import f from '../../lib';
 
 
 fixture("Getting Started")

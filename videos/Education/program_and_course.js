@@ -1,5 +1,5 @@
 import { Selector } from 'testcafe';
-import f from '../lib';
+import f from '../../lib';
 
 const video_title = "Program and Course"
 
