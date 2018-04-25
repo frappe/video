@@ -2,7 +2,7 @@ import { Selector } from 'testcafe';
 import f from '../lib';
 
 
-fixture("Getting Started")
+fixture("Printing and Branding")
     .page ("http://gadgets.erpnext.com/login");
 
 
