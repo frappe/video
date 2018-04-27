@@ -1,11 +1,11 @@
 import { Selector } from 'testcafe';
-import f from '../lib';
+import f from '../../lib';
 
-const video_title = "Serialized Inventory"
+const video_title = "Batched Inventory"
 
 
 fixture(video_title)
-    .page ("http://gadgets-local:8000/login");
+    .page ("http://site.local:8000/desk");
 
 test(video_title, async t => {
 	

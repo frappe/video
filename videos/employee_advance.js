@@ -1,127 +1,199 @@
 import { Selector } from 'testcafe';
 import f from '../lib';
 
+const video_title = "Employee Advance"
 
-fixture("Material Request to Purchase Order")
+
+fixture(video_title)
     .page ("http://gadgets.erpnext.com/login");
 
-test('Material Request to Purchase Order', async t => {
+test(video_title, async t => {
 	
-	await f.login('umair.sayyed@icloud.com', '1234')
+	await f.login('michael.corleone@gadgets.com', '1234')
 	await f.setTestSpeed(0.75).wait(500)
-	await f.use_voice("samantha")
+	await f.use_voice("Tom")
 
     await f.toggle_speak(true)
 	
-	await f.speak(`
+	await f.speak(`Hi.
+
+			Welcome to E R P Next tutorials.
+
+			In this video, we will learn.`)
+
+	await f.add_slide({
+			title: "Employee Advance",
+			})
+
+	await f.speak(`how an advance amount is given to an employee, and how to adjust the same
+				against an expense claim.`)
+
+	await f.remove_slide()
+
+	await f.speak(`Let's create a new employee advance.`)
+
+	await f.search ("new employee adv", "New Employee Advance")
 		
-		Close password notification.
-		
-		Hi.
+	await f.hover_element("label", "Employee")
 
-		Welcome to E R P Next tutorial.
+	await f.speak(`Select an employee.s`)
 
-		In this video, we will learn how to initiate procurement process in E R P Next. For requesting purchase of material, create 
-		a Material Request.`)
+	await f.fill_field("Employee", "EMP/0006", "jane")
 
-	await f.search ("new material re", "New Material Request")
-		
-	await f.click('[data-fieldname="material_request_type"]')
+	await f.speak(`Enter the purpose.`)
 
-	await f.speak(`
-			Material Request can be created for multiple purposes like Purchase, Transfer, Issue and Production. 
-		`)
-		
-	await f.speak(`
-		We will create this Material Request for Purchase.
-		`)
-		
-	await f.click('[data-fieldname="material_request_type"]')
-		
-	await f.fill_field("Type", "Purchase")
-		
-	await f.speak(`
-		. In material Request, you can pull items from different sources.
-			`)
-	await f.hover_element("button","Get items from")
+	await f.fill_field("Purpose", "Conveyance for travel to Delhi")
 
-	await f.hover_element("button","Get Items from BOM")
-		
-	await f.speak(`
-			Let's pull items from Sales Order.
-		`) 
-		
-	await f.click_toolbar_button('Get items from')
+	await f.fill_field("Advance Amount", "10000")
 
-	await f.click_dropdown_item('Sales Order')
+	await f.speak(`This is an advance amount requested.`)
 
-	await f.pause(1)
-		
-	await f.speak(`
-		we can filter based on Sales Order I D and other filters available.
-		`)
+	await f.hover_element("label","Advance Account")
 
-	await f.fill_field("search_term","47")
+	await f.speak(`Select a current asset account in which value of advacen paid will be booked.`)
 
-	await f.pause(1)
+	await f.fill_field("Advance Account", "Employee Advance - GTPL", "Employee Advance")
 
-	await f.click_primary_button("Get Items")
+	await f.speak(`Also, select mode of payment.`)
 
-	await f.speak(`
-			Item details are fetched from Material Request. Update a date by which this item is required.
-			`)
+	await f.fill_field("Mode of Payment", "Wire Transfer", "wire")
 
-	await f.open_row("items",1)
-		
-	await f.fill_field("schedule_date","28-07-2017")
+	await f.speak(`Let's save and submit this expense claim. If needed, you can also apply workflow on it
+			to manage multiple approvals.`)
+
+	await f.click_primary_button("Save")
+
+	await f.search("employee adv", "Employee Advance List")
+
+	await f.click_list_item("EA-00005")
 	
-	await f.close_row()
-		
-	await f.open_row("items",2)
+	await f.click_primary_button("Submit")
 
-	await f.fill_field("schedule_date","28-07-2017")
+	await f.click_primary_button("Yes")
 
-	await f.close_row()
-		
-	await f.click_section("More Information")
-		
-	await f.speak(`
-			Enter more details about this Material Request here.
-		`)
+	await f.pause(2)
 
-	await f.fill_field("Requested For", "Mumbai Warehouse")
+	await f.hover_element("label", "Status")
 
-	await f.speak(`
-			Let's save and submit this Material Request.
-		`)
-		
-	await f.click_primary_button('Save')
-	await f.click_primary_button('Submit')
-	await f.click_primary_button('Yes')
-		
+	await f.speak(`You can notice that status for the Employee Advance is Unpaid.
+			When employee is paid, Payment Entry is created.`)
+
 	await f.click_toolbar_button("Make")
-		
-	await f.speak(`
-			Once a Material Request is submitted, you can make these transactions against it. Once a Purchase Order is created 
-			for Material Request, it's status will be update as Ordered.
-		`)
-		
-	await f.speak(`
-			You can automate the creation of Material Request based on the re-order level of an item. For this, you should update re-order level
-		and re-order quantity in the master. Also, enable feature of auto creation of Material Request in the Stock Settings.
-		`)
+
+	await f.click_dropdown_item("Payment")
+
+	await f.scroll_to_section("Payment From / To")
+
+	await f.hover_element("label", "Party Type")
+	await f.hover_element("label", "Party")
+
+	await f.speak(`In the payment entry, Employee details are updated as a party.`)
+
+	await f.click_section("Accounts")
+
+	await f.hover_element("label", "Account Paid To")
+
+	await f.speak(`On submission of payment entry, this current asset account gets
+			debite, against a bank or cash account.`)
+
+	await f.hover_element("label", "Paid Amount")
+
+	await f.speak(`Paid Ampunt and Employee Advance I D is updated in a table.`)
 	
-	await f.search("stock sett","Stock Settings")
+	await f.scroll_to_section("Transaction ID")
+
+	await f.speak(`Enter payment acknowledgment details in this section.`)
+
+	await f.fill_field("Cheque/Reference No", "MHG64688")
+
+	await f.fill_field("Cheque/Reference Date", "23-04-2018")
+
+	await f.speak(`Let's save and submit this Payment Entry`)
+
+	await f.click_primary_button("Save")
+	await f.click_primary_button("Submit")
+	await f.click_primary_button("Yes")
+
+	await f.pause(1)
+
+	await f.go_back()
 	
-		
-	await f.hover_element("label","Raise Material Request when stock reaches re-order level")
-		
-	await f.speak(`
-			Check this field to automate creation of Material Request.
-				`)
-		
+	await f.click_form_menu()
+
+	await f.click_dropdown_item("Reload")
+
+	await f.scroll_to_section("Payment Status")
+
+	await f.hover_element("label","Advance Amount")
+
+	await f.hover_element("label","Paid Amount")
+
+	await f.speak(`Based on the payment entry made, value is updated these fields.`)
+
+	await f.add_slide({
+		title: "Expense Claim",
+		})
+
+	await f.speak(`now, let's check how to allocate Emmployee advance in the expense
+				claim.`)
+
+	await f.remove_slide()
+
+	await f.search("expense cla", "Expense Claim List")
+
+	await f.click_list_item("Jane Done")
+
+	await f.speak(`This is an expense claim created for the same employee to whom
+			advance was given.`)
+
+	await f.scroll_to_section("Advance Payments")
+
+	await f.speak(`In this section, Employee Advance Entry can be selected.`)
+
+	await f.add_row("advances")
+
+	await f.open_row("advances", 1)
+
+	await f.fill_field("Employee Advance", "EA-00005", "ea")
+
+	await f.speak(`On selection of Employee advance, amount is allocated against 
+				Expense claim, and outstanding is updated.`)
+
+	await f.close_row()
+
+	await f.scroll_to_section("Advance Payments")
+
+	await f.pause(1)
+
+	await f.scroll(0)
+
+	await f.fill_field("Approval Status", "Approved")
+
+	await f.click_primary_button("Save");
+
+	await f.pause(2)
+
+	await f.click_primary_button("Submit")
+
+	await f.click_primary_button("Yes")
+	
+	await f.speak(`Now, let's check impact of Expense claim on the Employee advance.`)
+	
+	await f.search("employee ad", "Employee Advance List")
+
+	await f.click_list_item("EA-00005")
+
+	await f.click_form_menu()
+
+	await f.click_dropdown_item("Reload")
+
+	await f.hover_element("label", "Claimed Amount")
+
+	await f.speak(`Here, you can see that based on the allocation in the Expense Claim,
+				Claimed Amount is updated in the Employee advance.`)
+
 	await f.speak(`
 			Hope you found this video tutorial useful. For more details and free sign up, check e r p next dot com.
-		Thanks for watching.
+			Thanks for watching.
 		`)
 });
