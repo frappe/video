@@ -1,17 +1,18 @@
 import { Selector } from 'testcafe';
 import f from '../lib';
 
+const video_title = "Email Account"
 
-fixture("Email Account")
-.page ("http://gadgets.erpnext.com/login");
+fixture(video_title)
+    .page ("http://chaiwala.erpnext.com/login");
 
 test(video_title, async t => {
 	
-	await f.login('michael.corleone@gadgets.com', '1234')
+	await f.login('umair.sayyed@icloud.com', '1234')
 	await f.setTestSpeed(0.75).wait(500)
 	await f.use_voice("Tom")
 
-    await f.toggle_speak(false)
+    await f.toggle_speak(true)
 	
 	await f.speak(`
 		
@@ -107,6 +108,8 @@ test(video_title, async t => {
 
 	await f.pause(1)
 
+	await f.fill_field("Email Account Name", "Gadgets Support")
+
 	await f.hover_element("label", "Domain")
 
 	await f.speak(`On adding email I D, based on the email domain, value is updated in the 
@@ -128,10 +131,13 @@ test(video_title, async t => {
 
 	await f.click_primary_button("Save")
 
-	await f.speak(`As per this configuration, new opportunity will be create for each emaul received on this I D.
-			You can use this feature to centralize your queries related to sales and support. for example, if you
-			email us on support at e r p next dot com, then new issue is creatd in our E R P Next account. This email
-			managed using email account feature in our E R P Next. Same way, sending email on sales at e r p next dot com
+	await f.speak(`As per this configuration, new opportunity will be create for each email received on this I D.
+
+			You can use this feature to centralize your queries related to sales and support. 
+			
+			For example, if you email us on support at e r p next dot com, then new issue is creatd in our E R P Next account. 
+			
+			This email managed using email account feature in our E R P Next. Same way, sending email on sales at e r p next dot com
 			creates a unique opportunity in our account, to which our sales team sends a response.
 			`)
 
@@ -149,7 +155,7 @@ test(video_title, async t => {
 	await f.fill_field("Enable Outgoing")
 
 	await f.speak(`If you also want to set this email as a default outgoing email for your account, 
-			check deault ougoing field.`)
+			check default ougoing field.`)
 
 	await f.fill_field("Default Outgoing")
 

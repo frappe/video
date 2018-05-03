@@ -3,7 +3,6 @@ import f from '../lib';
 
 const video_title = "Advance Payment"
 
-
 fixture(video_title)
     .page ("http://gadgets.erpnext.com/login");
 
@@ -15,81 +14,81 @@ test(video_title, async t => {
 
     await f.toggle_speak(true)
 	
-	// await f.speak(`Hi.
+	await f.speak(`Hi.
 
-	// 		Welcome to E R P Next tutorials.
+			Welcome to E R P Next tutorials.
 
-    //         In this video, we will learn how to manage advance
-    //         payment entry.`)
+            In this video, we will learn how to manage advance
+            payment entry.`)
 
-	// await f.add_slide({
-	// 		title: "Advance Payment",
-	// 		})
+	await f.add_slide({
+			title: "Advance Payment",
+			})
 
-    // await f.speak(`Advance Payment is a payment received or paid even before 
-    //             the creation of an invoice.`)
+    await f.speak(`Advance Payment is a payment received or paid even before 
+                the creation of an invoice.`)
 
-    // await f.remove_slide()
+    await f.remove_slide()
 
-    // await f.speak(`You can create an Advance Payment entry from Sales and Purchase Order,
-    //             or directly create a payment entry for it.`)
+    await f.speak(`You can create an Advance Payment entry from Sales and Purchase Order,
+                or directly create a payment entry for it.`)
 
-    // await f.search("sales order", "Sales Order List")
+    await f.search("sales order", "Sales Order List")
 
-    // await f.click_list_item("Fermentum Metus Aenean Inc")
+    await f.click_list_item("Fermentum Metus Aenean Inc")
 
-    // await f.speak(`This is a Sales Order aginst which Sales Invoice has not been
-    //             created as yet. Let's make an entry for the advance payment 
-    //             which we received from this customer.`)
+    await f.speak(`This is a Sales Order aginst which Sales Invoice has not been
+                created as yet. Let's make an entry for the advance payment 
+                which we received from this customer.`)
 
-    // await f.click_toolbar_button("Make")
+    await f.click_toolbar_button("Make")
 
-    // let payment_button  = await f.select_element('.btn-group.open li:nth-child(6)', '', { modify_selector: false});
-    // await f.click(payment_button)
+    let payment_button  = await f.select_element('.btn-group.open li:nth-child(6)', '', { modify_selector: false});
+    await f.click(payment_button)
 
-    // await f.pause(2)
+    await f.pause(2)
 
-    // await f.hover_element("label", "Party Type")
+    await f.hover_element("label", "Party Type")
 
-    // await f.speak(`When receiving advance, in the payment entry, customer will be
-    //          selected as a party.`)
+    await f.speak(`When receiving advance, in the payment entry, customer will be
+             selected as a party.`)
 
-    // await f.click_section("Accounts")
+    await f.click_section("Accounts")
 
-    // await f.hover_element("label", "Account Paid To")
+    await f.hover_element("label", "Account Paid To")
 
-    // await f.hover_element("label", "Account Paid From")
+    await f.hover_element("label", "Account Paid From")
 
-    // await f.speak(`these are the bank and receivable accounts in which
-    //         posting will be done.`)
+    await f.speak(`these are the bank and receivable accounts in which
+            posting will be done.`)
 
-    // await f.scroll_to_section("Amount")
+    await f.scroll_to_section("Amount")
 
-    // await f.speak(`Enter the advance payment amount in the Paid amount field.`)
+    await f.speak(`Enter the advance payment amount in the Paid amount field.`)
 
-    // await f.pause(1)
+    await f.pause(1)
 
-    // await f.speak(`Since we are making this payment entry against Sales Order, 
-    //         relevant I D is updated in a table. 
+    await f.speak(`Since we are making this payment entry against Sales Order, 
+            relevant I D is updated in a table. 
             
-    //         If you directly create an advance payment, then
-    //         this table will not have value in it.`)
+            If you directly create an advance payment, then
+            this table will not have value in it.`)
 
-    // await f.scroll_to_section("Transaction ID")
+    await f.scroll_to_section("Transaction ID")
     
-    // await f.speak(`Entert Payment Acknowledgment Details.`)
+    await f.speak(`Entert Payment Acknowledgment Details.`)
     
-    // await f.fill_field("Cheque/Reference No", "969859")
-    // await f.fill_field("Cheque/Reference Date", "24-04-2018")
+    await f.fill_field("Cheque/Reference No", "969859")
+    await f.fill_field("Cheque/Reference Date", "24-04-2018")
 
-    // await f.speak(`Let's Save and Submit this Payment Entry.`)
+    await f.speak(`Let's Save and Submit this Payment Entry.`)
     
-    // await f.click_primary_button("Save")
-    // await f.click_primary_button("Submit")
-    // await f.click_primary_button("Yes")
+    await f.click_primary_button("Save")
+    await f.click_primary_button("Submit")
+    await f.click_primary_button("Yes")
 
-    // await f.speak(`Now, let's check how this Payment Entry will be adjusted in the
-    //         Sales Invoice.`)
+    await f.speak(`Now, let's check how this Payment Entry will be adjusted in the
+            Sales Invoice.`)
 
     await f.search("sales order", "Sales Order List")
 
