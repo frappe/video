@@ -146,7 +146,7 @@ test(video_title, async t => {
 	await f.speak(`If an Email Account is saved successfully, it indicates that your E R P Next account is able to
 			establish connection with your email service.`)
 
-	await f.speak(`Now, let's check how to enable outgoing for this I D.`)
+	await f.speak(`Now, let's check how to enable outgoing emails for this I D.`)
 	
 	await f.hover_element("label", "Enable Outgoing")
 
@@ -154,7 +154,7 @@ test(video_title, async t => {
 	
 	await f.fill_field("Enable Outgoing")
 
-	await f.speak(`If you also want to set this email as a default outgoing email for your account, 
+	await f.speak(`If you also want to set this email as a default outgoing email account, 
 			check default ougoing field.`)
 
 	await f.fill_field("Default Outgoing")
