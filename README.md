@@ -22,7 +22,11 @@
 
 1. Run the following command from your directory:
 
-        node run_video [your-video-filename]
+        npm run run-video -- [your-video-filename]
+
+Or if you have yarn
+
+	yarn run-video videos/:video-file-name
 
 
 1. After completion: stop the video recorder, edit the video, and publish!
