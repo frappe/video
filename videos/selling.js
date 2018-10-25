@@ -11,7 +11,9 @@ test('Selling Cycle in ERPNext', async t => {
 	await f.setTestSpeed(0.75).wait(500)
 	await f.use_voice("samantha")
 
-    await f.toggle_speak(true)
+	await f.toggle_speak(true)
+	
+	await f.close_modal()
 	
 	await f.speak(`
 
